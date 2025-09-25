@@ -1,0 +1,62 @@
+{
+    "manifest_version": 3,
+    "name": "Amazon Data Scraper",
+    "version": "1.1",
+    "description": "Scrapes product data from Amazon pages and copies it to the clipboard in a specific format.",
+    "permissions": [
+      "activeTab"
+    ],
+    "host_permissions": [
+      "*://www.amazon.com/*",
+      "*://www.amazon.in/*",
+      "*://www.amazon.co.uk/*",
+      "*://www.amazon.de/*",
+      "*://www.amazon.ca/*",
+      "*://www.amazon.com.au/*",
+      "*://www.amazon.fr/*",
+      "*://www.amazon.it/*",
+      "*://www.amazon.es/*",
+      "*://www.amazon.co.jp/*"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/amazon16.png",
+        "48": "images/amazon48.png",
+        "128": "images/amazon128.png"
+      }
+    },
+    "icons": {
+        "16": "images/amazon16.png",
+        "48": "images/amazon48.png",
+        "128": "images/amazon128.png"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "*://www.amazon.com/dp/*",
+          "*://www.amazon.in/dp/*",
+          "*://www.amazon.co.uk/dp/*",
+          "*://www.amazon.de/dp/*",
+          "*://www.amazon.ca/dp/*",
+          "*://www.amazon.com.au/dp/*",
+          "*://www.amazon.fr/dp/*",
+          "*://www.amazon.it/dp/*",
+          "*://www.amazon.es/dp/*",
+          "*://www.amazon.co.jp/dp/*",
+          "*://www.amazon.com/*/dp/*",
+          "*://www.amazon.in/*/dp/*",
+          "*://www.amazon.co.uk/*/dp/*",
+          "*://www.amazon.de/*/dp/*",
+          "*://www.amazon.ca/*/dp/*",
+          "*://www.amazon.com.au/*/dp/*",
+          "*://www.amazon.fr/*/dp/*",
+          "*://www.amazon.it/*/dp/*",
+          "*://www.amazon.es/*/dp/*",
+          "*://www.amazon.co.jp/*/dp/*"
+        ],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
