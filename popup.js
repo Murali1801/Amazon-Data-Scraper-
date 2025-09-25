@@ -4,10 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     copyButton.addEventListener('click', () => {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            // Check if tabs[0] exists and has an id
             if (!tabs || !tabs[0] || !tabs[0].id) {
                 status.textContent = 'Cannot access current tab.';
-                console.error('Could not get active tab ID.');
                 return;
             }
 
@@ -38,16 +36,15 @@ function copyDataAsRichText(data) {
     const listener = (e) => {
         e.preventDefault();
 
-        // 1. Create the HTML version for Excel/Sheets.
-        // This version does NOT handle newlines, ensuring everything is on a single line.
+        // 1. Create the HTML version for Excel/Sheets with a clickable link.
         const titleHtml = `<a href="${data.url}">${data.title.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</a>`;
         const otherCellsHtml = data.otherData.map(item => `<td>${String(item).replace(/</g, '&lt;').replace(/>/g, '&gt;')}</td>`).join('');
         const tableHtml = `<table><tbody><tr><td>${titleHtml}</td>${otherCellsHtml}</tr></tbody></table>`;
         
-        // 2. Create the plain text version as a simple fallback.
+        // 2. Create the plain text version as a fallback.
         const plainText = [data.title, ...data.otherData].join('\t');
 
-        // Set both formats on the clipboard.
+        // Set both formats on the clipboard. Excel and Sheets prefer the HTML version.
         e.clipboardData.setData('text/html', tableHtml);
         e.clipboardData.setData('text/plain', plainText);
     };

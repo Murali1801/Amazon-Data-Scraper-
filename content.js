@@ -39,13 +39,11 @@ function scrapeProductData() {
     // 2. Product URL
     const url = window.location.href;
 
-    // 3. MRP (List Price) - Find the strikethrough price
-    const mrpText = queryText([
-        '#corePriceDisplay_desktop_feature_div span.a-text-price .a-offscreen',
-        '#corePrice_feature_div span.a-text-price .a-offscreen',
-        '.basisPrice .a-offscreen'
+    // 3. Price (Main Selling Price from .a-price-whole)
+    const priceText = queryText([
+        '.a-price-whole'
     ]);
-    const mrp = mrpText.replace(/[^0-9.]/g, '').split('.')[0] || '';
+    const price = priceText.replace(/[^0-9]/g, '') || ''; // Cleans "1,999." to "1999"
 
     // 4. Reviews (numbers) - e.g., (1,433) -> 1433
     const reviewsText = queryText(['.sc-gvLUYL.jLZItm']);
@@ -69,7 +67,7 @@ function scrapeProductData() {
         title,
         url,
         otherData: [
-            mrp,
+            price,
             reviews,
             rating,
             formattedRank,

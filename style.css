@@ -1,58 +1,44 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    width: 280px;
-    padding: 10px;
-    background-color: #f0f2f5;
+    font-family: "Amazon Ember", Arial, sans-serif;
     text-align: center;
+    width: 250px;
+    padding: 15px;
+    background-color: #0F1111; /* Changed to Amazon's black */
+    color: #FFFFFF; /* Changed text to white for readability */
 }
 
-.container {
-    padding: 10px;
-}
-
-h1 {
-    font-size: 1.2rem;
-    color: #111;
+h3 {
     margin-top: 0;
-    margin-bottom: 5px;
-}
-
-p {
-    font-size: 0.9rem;
-    color: #555;
     margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF; /* Changed heading to white */
 }
 
 button {
-    background-color: #232f3e;
-    color: white;
-    border: none;
-    padding: 12px 20px;
+    background-color: #FFD814;
+    border: 1px solid #FCD200;
+    color: #0F1111;
+    padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.2s, transform 0.1s;
+    font-size: 14px;
+    font-weight: 500;
     width: 100%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5); /* Darkened shadow for contrast */
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
 button:hover {
-    background-color: #3b4b61;
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
+    background-color: #F7CA00;
+    border-color: #F2C200;
 }
 
 #status {
     margin-top: 15px;
-    font-size: 0.85rem;
-    color: #2a8a2a;
-    font-weight: 500;
-    min-height: 20px;
+    font-size: 14px;
+    color: #28a745; /* A lighter green for dark backgrounds */
+    height: 20px;
+    line-height: 20px;
 }
+
