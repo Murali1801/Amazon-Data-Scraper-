@@ -55,9 +55,18 @@ function scrapeProductData() {
     // 6. Rankings (two levels) - Formatted on a single line
     const formattedRank = formatRank();
 
-    // 7. Bought in past month
+    // 7. Bought in past month (Handles "K" for thousands)
     const boughtPastMonthText = queryText(['#social-proofing-faceout-title-tk_bought .a-text-bold']);
-    const boughtPastMonth = boughtPastMonthText.replace(/[^0-9]/g, '') || '';
+    let boughtPastMonth = '';
+    if (boughtPastMonthText) {
+        const rawValue = boughtPastMonthText.split(' ')[0].toLowerCase(); // e.g., "1k+" or "200+"
+        if (rawValue.includes('k')) {
+            const numPart = parseFloat(rawValue.replace('k', ''));
+            boughtPastMonth = isNaN(numPart) ? '' : String(numPart * 1000);
+        } else {
+            boughtPastMonth = rawValue.replace(/[^0-9]/g, '') || '';
+        }
+    }
     
     // 8. Unit Sales
     const unitSales = queryText(['.sc-puOct.eeNUl']) || '';
