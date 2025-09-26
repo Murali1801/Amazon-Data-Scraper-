@@ -1,31 +1,47 @@
 {
   "manifest_version": 3,
   "name": "Amazon Data Scraper",
-  "version": "1.0",
-  "description": "Copies product data from an Amazon page to the clipboard in a specific format.",
+  "version": "1.3",
+  "description": "Scrapes product data from Amazon pages.",
   "permissions": [
     "activeTab",
-    "scripting",
-    "clipboardWrite"
+    "scripting"
   ],
+  "host_permissions": [
+    "*://*.amazon.in/*",
+    "*://*.amazon.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
-    "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/amazon16.png",
-      "48": "images/amazon48.png",
-      "128": "images/amazon128.png"
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "Amazon Data Scraper",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "commands": {
+    "copy-data-shortcut": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Z",
+        "mac": "MacCtrl+Shift+Z"
+      },
+      "description": "Copy Amazon Product Data"
     }
   },
   "content_scripts": [
     {
-      "matches": ["*://www.amazon.in/*", "*://www.amazon.com/*"],
+      "matches": ["*://*.amazon.in/*", "*://*.amazon.com/*"],
       "js": ["content.js"]
     }
-  ],
-  "icons": {
-    "16": "images/amazon16.png",
-    "48": "images/amazon48.png",
-    "128": "images/amazon128.png"
-  }
+  ]
 }
 

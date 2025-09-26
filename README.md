@@ -13,17 +13,8 @@ This is a Chrome extension that scrapes product data from Amazon product pages a
     *   Best Sellers Rank
     *   Number of units bought in the past month
 *   Copies data in a rich text format, which preserves the hyperlink when pasted into applications like Excel or Google Sheets.
-*   Supports multiple Amazon domains, including:
-    *   `amazon.com`
-    *   `amazon.in`
-    *   `amazon.co.uk`
-    *   `amazon.de`
-    *   `amazon.ca`
-    *   `amazon.com.au`
-    *   `amazon.fr`
-    *   `amazon.it`
-    *   `amazon.es`
-    *   `amazon.co.jp`
+*   Supports `amazon.in` and `amazon.com`.
+*   Provides a keyboard shortcut (`Ctrl+Shift+Z`) to copy data without opening the popup.
 
 ## Installation
 
@@ -46,6 +37,7 @@ This is a Chrome extension that scrapes product data from Amazon product pages a
 *   `popup.html`: The HTML file for the extension's popup.
 *   `popup.js`: The JavaScript file for the extension's popup. It handles user interaction and communication with the content script.
 *   `content.js`: The content script that is injected into Amazon product pages. It scrapes the product data from the page.
+*   `background.js`: The service worker that listens for a keyboard shortcut to trigger the data scraping.
 *   `style.css`: The stylesheet for the extension's popup.
-*   `amzn.html`: An HTML file, likely for testing or development purposes.
-*   `images/`: A directory containing the extension's icons.
+*   `amzn.html`: An HTML file for testing or development purposes.
+*   `images/`: A directory containing the extension's icons (`icon16.png`, `icon48.png`, `icon128.png`).
